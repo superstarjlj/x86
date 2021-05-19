@@ -12,3 +12,19 @@
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.1.254/g' package/base-files/files/bin/config_generate
+
+pushd package/lean
+git clone --depth=1 https://github.com/fw876/helloworld
+popd
+
+mkdir package/community
+pushd package/community
+
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
+
+git clone --depth=1 https://github.com/Lienol/openwrt-package
+git clone --depth=1 -b master https://github.com/vernesong/OpenClash
+
+git clone --depth=1 https://github.com/SuLingGG/luci-app-diskman
+mkdir parted
+cp luci-app-diskman/Parted.Makefile parted/Makefile
